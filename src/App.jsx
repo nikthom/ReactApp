@@ -22,12 +22,12 @@ class EnterStock extends React.Component{
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form class = "input" onSubmit={this.handleSubmit}>
         <label>
           Enter stock name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input class = "input" type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input class = "input" type="submit" value="Submit" />
       </form>
     );
   }
@@ -37,10 +37,10 @@ class EnterStock extends React.Component{
 function App() {
     return (
       <div>
-        <header className="App-header">
+        <div className="App-header">
           <div id = "title">GetStock</div>
           <div> <EnterStock /> </div>
-        </header>
+        </div>
       </div>
     );
 }
