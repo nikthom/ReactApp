@@ -11,15 +11,27 @@
 
 #title {
   font-size: 50px;
-  margin-bottom: 10%;
-}
-#input{
-  margin-top: 50px;
-  width:300px;
-  height: 300px;
-  
+  margin-top: 0%;
 }
 
+.form-container{
+  margin-top: 50px;
+  width: 500px;
+}
+
+  #input{
+    width: 40%;
+    height: 37px;
+    font-size: 20px;
+  }
+
+  #submitButton{
+    width: 20%;
+    height: 40px;
+    font-size: 20px;
+  }
 html {
   background-color: #282c34;
 }
+
+
