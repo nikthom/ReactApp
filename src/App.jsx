@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import key from './key.js';
 
 class Result extends React.Component{
   constructor(props){
@@ -18,8 +19,12 @@ class Result extends React.Component{
 class EnterStock extends React.Component{
   constructor(props){
     super(props)
-    console.log("stuff");
-    this.state = {value: '', result: ''};
+    this.state = {
+      value: '', 
+      result: '', 
+      objectHead: 'Global Quote',
+      objectTail: '05. price'
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,15 +35,23 @@ class EnterStock extends React.Component{
   }
   
   handleSubmit(event){
-    this.setState({result: this.state.value});
+    fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + this.state.value + "&apikey=" + key.key)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      this.setState({result: data[this.state.objectHead][this.state.objectTail]})
+    })
+    .catch((e) => {
+      this.setState({result: "Not a valid stock symbol"})
+    });
   }
   
 
   render(){
     return(
       <div> 
-        {/* <Result data = {this.state.result}/>  */}
-        {this.state.result}
+        <Result data = {this.state.result}/>  
         <label id = "input">
           Enter stock name:
           <input id = "input" type="text" value={this.state.value} onChange={this.handleChange} />
