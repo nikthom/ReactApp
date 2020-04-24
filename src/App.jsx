@@ -35,6 +35,7 @@ class EnterStock extends React.Component{
   }
   
   handleSubmit(event){
+    event.preventDefault();
     fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + this.state.value + "&apikey=" + key.key)
     .then((response) => {
       return response.json();
@@ -51,12 +52,14 @@ class EnterStock extends React.Component{
   render(){
     return(
       <div> 
-        <Result data = {this.state.result}/>  
-        <label id = "input">
-          Enter stock name:
-          <input id = "input" type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input id = "submitButton" type="button" value="Submit" onClick={this.handleSubmit} />
+        <Result data = {this.state.result}/>
+        <form onSubmit = {this.handleSubmit}>
+          <label id = "input">
+            Enter stock name:
+            <input id = "input" type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input id = "submitButton" type="submit" value="Submit" onClick={this.handleSubmit} />
+        </form>
       </div>
     );
   }
