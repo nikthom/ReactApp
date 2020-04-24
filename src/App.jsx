@@ -2,10 +2,24 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+class Result extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    return(
+      <div>
+        <p> {this.props.data} </p>
+      </div>
+    );
+  }
+}
 class EnterStock extends React.Component{
   constructor(props){
     super(props)
-    this.state = {value: ''};
+    console.log("stuff");
+    this.state = {value: '', result: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,19 +30,21 @@ class EnterStock extends React.Component{
   }
   
   handleSubmit(event){
-    alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
+    this.setState({result: this.state.value});
   }
+  
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
+      <div> 
+        {/* <Result data = {this.state.result}/>  */}
+        {this.state.result}
         <label id = "input">
           Enter stock name:
           <input id = "input" type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input id = "submitButton" type="submit" value="Submit" />
-      </form>
+        <input id = "submitButton" type="button" value="Submit" onClick={this.handleSubmit} />
+      </div>
     );
   }
 }
