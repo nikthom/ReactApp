@@ -10,12 +10,14 @@ class Result extends React.Component{
 
   render(){
     return(
-      <div>
+      <div id = "result-style">
+        <p>Current stock price: &nbsp;&nbsp;&nbsp;&nbsp;</p>
         <p> {this.props.data} </p>
       </div>
     );
   }
 }
+
 class EnterStock extends React.Component{
   constructor(props){
     super(props)
@@ -51,11 +53,13 @@ class EnterStock extends React.Component{
 
   render(){
     return(
-      <div> 
-        <Result data = {this.state.result}/>
+      <div>
+        <div> 
+          <Result data = {this.state.result}/>
+        </div> 
         <form onSubmit = {this.handleSubmit}>
           <label id = "input">
-            Enter stock name:
+            Enter stock symbol:
             <input id = "input" type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
           <input id = "submitButton" type="submit" value="Submit" onClick={this.handleSubmit} />

@@ -18,12 +18,16 @@
   margin-top: 50px;
   width: 500px;
 }
+  #result-style{
+    display: inline-flex;
+    
+  }
 
   #input{
     width: 40%;
     height: 37px;
     font-size: 20px;
-  }
+  } 
 
   #submitButton{
     width: 20%;
